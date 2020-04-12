@@ -1,8 +1,10 @@
 import React from "react";
+
 import "../../assets/styles/global.scss";
 
 // Import pages to route to
 import Home from "../pages/Home";
+import Form from "../UserRegistration/UserRegistrationForm/UserRegistrationForm";
 
 import { Switch, Route, withRouter } from "react-router-dom";
 
@@ -11,6 +13,7 @@ const App = ({ history }) => {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={Form} />
       </Switch>
     </div>
   );
