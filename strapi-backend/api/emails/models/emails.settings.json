@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "emails",
+  "info": {
+    "name": "Emails"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
