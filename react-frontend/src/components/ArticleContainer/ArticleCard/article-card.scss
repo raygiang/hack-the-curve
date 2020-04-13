@@ -1,0 +1,66 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/mixins.scss';
+
+.article-card {
+    margin-bottom: 1rem;
+    background-color: lightgreen;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row;
+
+    &__feature-image-container {
+        order: -1;
+        min-width: 120px;
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        @include image-container;
+
+        &:hover {
+            position: relative;
+
+            &::before {
+                @include image-overlay(rgba(255, 255, 255, 0.3));
+            }
+        }
+    }
+
+    &__content-container {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1.5rem 0 2.5rem;
+        width: 100%;
+        // justify-content: center;
+    }
+
+    &__title {
+        a {
+            font-weight: normal;
+            font-size: 30px;
+            text-decoration: none;
+            color: #000;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    &__date {
+        order: -1;
+        color: $primary-color;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    &__blurb {
+        margin: 0.5rem 0;
+    }
+
+    &__read-more-link {
+        width: max-content;
+        margin-left: auto;
+        @include primary-link;
+    }
+}
