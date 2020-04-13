@@ -20,7 +20,7 @@ const GET_CATEGORIES = gql`
 function FilterList(props) {
     const {toggleCategory} = props;
     const [categoryList, setCategoryList] = useState(null);
-    const { loading, error, data } = useQuery(GET_CATEGORIES);
+    const {loading, error, data} = useQuery(GET_CATEGORIES);
 
     /**
      * Maps the categories stored in data to Filter components. Update the CategoryList state with the result.

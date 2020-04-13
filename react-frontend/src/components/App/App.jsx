@@ -2,6 +2,7 @@ import React from "react";
 import "../../assets/styles/global.scss";
 
 // Import pages to route to
+import Header from "../Header/Header";
 import Home from "../pages/Home";
 
 import { Switch, Route, withRouter } from "react-router-dom";
@@ -9,6 +10,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 const App = ({ history }) => {
   return (
     <div className="App">
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
       </Switch>

@@ -1,11 +1,13 @@
 import React from "react";
 import ArticlePanel from "../ArticlePanel/ArticlePanel";
+import EventsPanel from "../EventsPanel/EventsPanel";
+import './home.scss';
 
 const Home = () => {
   return (
-    <div>
-      <h1> Home </h1>
+    <div className="home-container">
       <ArticlePanel />
+      <EventsPanel />
     </div>
   );
 };
