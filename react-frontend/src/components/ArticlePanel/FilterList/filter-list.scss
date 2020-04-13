@@ -1,0 +1,16 @@
+@import '../../../assets/styles/variables.scss';
+
+.filter-list {
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    flex: 20%;
+
+    &__heading {
+        color: #FFF;
+        font-weight: normal;
+        font-size: 30px;
+        margin-bottom: 1rem;
+    }
+}

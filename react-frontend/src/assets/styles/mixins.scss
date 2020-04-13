@@ -26,13 +26,13 @@
 }
 
 @mixin primary-button {
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 1rem;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
-    font-size: 18px;
-    border: 1px solid #000;
-    background-color: transparent;
-    color: $primary-color;
+    border-radius: 5px;
+    border: 1px solid $secondary-color;
+    background-color: $secondary-color;
+    color: #FFF;
     display: inline-block;
     cursor: pointer;
     -webkit-appearance: none;
@@ -47,7 +47,21 @@
     }
 
     &:hover {
-        color: #FFF;
+        background-color: #FFF;
+        color: $secondary-color;
+    }
+}
+
+@mixin secondary-button {
+    @include primary-button;
+    border-color: #FFF;
+    color: #FFF;
+    background-color: transparent;
+
+    &:hover {
+        border-color: #000;
+        color: #000;
+        background-color: #FFF;
     }
 }
 

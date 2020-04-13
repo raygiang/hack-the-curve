@@ -1,13 +1,11 @@
 import React from "react";
-import ArticleContainer from "../ArticleContainer/ArticleContainer";
-import FilterList from "../FilterList/FilterList";
+import ArticlePanel from "../ArticlePanel/ArticlePanel";
 
 const Home = () => {
   return (
     <div>
       <h1> Home </h1>
-      <FilterList />
-      <ArticleContainer />
+      <ArticlePanel />
     </div>
   );
 };

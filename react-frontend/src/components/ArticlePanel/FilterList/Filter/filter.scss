@@ -1,0 +1,28 @@
+@import '../../../../assets/styles/global.scss';
+@import '../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/mixins.scss';
+
+.filter {
+    &__input {
+        &:focus + label {
+            outline: 1px dashed #FFF;
+        }
+
+        &:checked + label {
+            background-color: $secondary-color;
+        }
+    }
+
+    &__label {
+        font-size: 18px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        display: block;
+        margin: 0.25rem 0;
+        width: 100%;
+        @include secondary-button;
+        padding: 0.5rem 1rem;
+    }
+
+
+}

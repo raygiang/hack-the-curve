@@ -1,14 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import ArticleCard from "./ArticleCard/ArticleCard";
 import "./article-container.scss";
 
-const ArticleContainer = () => {
-    const selectedCategories = null;
+/**
+ * The container component for ArticleCards
+ * @param {Object} props the props passed into this component.
+ */ 
+const ArticleContainer = (props) => {
+    const {selectedCategories} = props;
+    let renderedArticles;
+
+    // GraphQL Query to retrieve articles based on selected categories passed in props
     const GET_ARTICLES = gql`
         query {
-            articles(where: {categories_in: ${selectedCategories ? selectedCategories : '[]'}}) {
+            articles(where: {categories_in: [${selectedCategories}]}) {
                 Title
                 Author
                 Publish_Date
@@ -19,10 +26,14 @@ const ArticleContainer = () => {
             }
         }
     `;
-
-    const [articleList, setArticleList] = useState(null);
-    const { loading, error, data } = useQuery(GET_ARTICLES);
     
+    const { loading, error, data } = useQuery(GET_ARTICLES, {
+        variables: {fetchPolicy: 'no-cache'}
+    });
+    
+    /**
+     * Maps the articles stored in data to ArticleCard components. Store the result in renderedArticles.
+     */ 
     const mapArticles = () => {
         const articles = data.articles.map((article, index) => (
             <ArticleCard
@@ -34,24 +45,30 @@ const ArticleContainer = () => {
                 content={article.Content}
             />
         ));
-        setArticleList(articles);
+        renderedArticles = articles;
     }
 
     if(error) {
         return (
-            <div>Error Retrieving Data</div>
+            <section className="article-container">
+                <div>Error Retrieving Data</div>
+            </section>
         )
     }
-    else if(!articleList) {
-        if(!loading) mapArticles();
+
+    if(loading & !data) {
         return (
-            <div>Loading...</div>
+            <section className="article-container">
+                <div>Loading...</div>
+            </section>
         )
     }
+
+    mapArticles();
     
     return (
         <section className="article-container">
-            {articleList}
+            {renderedArticles}
         </section>
     );
 };
