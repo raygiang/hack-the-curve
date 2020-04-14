@@ -1,0 +1,36 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/mixins.scss';
+
+.react-calendar {
+    button {
+        @include primary-button;
+        border-radius: 0;
+        background-color: $primary-color;
+        border-color: $primary-color;
+
+        &:disabled {
+            background-color: transparent;
+            border: 0;
+            color: #000;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    &__month-view__weekdays__weekday {
+        display: flex;
+
+        abbr {
+            margin: 0.25rem auto;
+            text-decoration: none;
+            font-weight: bold;
+            color: $primary-color;
+        }
+    }
+}

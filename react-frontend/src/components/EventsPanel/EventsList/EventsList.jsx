@@ -1,26 +1,39 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import EventCard from './EventCard/EventCard';
 import './events-list.scss';
 
-const currentDate = new Date();
+/**
+ * The container component for upcoming events
+ */ 
+function EventsList(props) {
+    const {selectedDay, whereClause} = props;
+    const heading = selectedDay ? 
+            "Events on " + selectedDay.toLocaleString('default', { month: 'short' }) + " " + selectedDay.getDate() + " " + selectedDay.getFullYear(): 
+            "Current and Upcoming Events";
+    const limitString = selectedDay ? '' : ', limit: 5';
+    let renderedEvents;
 
-const GET_EVENTS = gql`
-        query {
-            events(where: {End_Time_gte: "${currentDate.toISOString()}"},
-            sort: "Start_Time") {
+    console.log(`
+    query {
+        events(where: ${whereClause},
+        sort: "Start_Time" ${limitString}) {
             Name
             Start_Time
+        }
+    }
+`);
+    const GET_EVENTS = gql`
+        query {
+            events(where: ${whereClause},
+            sort: "Start_Time" ${limitString}) {
+                Name
+                Start_Time
             }
         }
     `;
 
-/**
- * The container component for upcoming events
- */ 
-function EventsList() {
-    const [eventList, setEventList] = useState(null);
     const {loading, error, data} = useQuery(GET_EVENTS);
 
     /**
@@ -39,25 +52,31 @@ function EventsList() {
                 altTag={event.Alt_Tag}
             />
         ));
-        setEventList(events);
+        renderedEvents = events;
     }
 
     if(error) {
         return (
-            <div>Error Retrieving Data</div>
-        )
-    }
-    else if(!eventList) {
-        if(!loading) mapEvents();
-        return (
-            <div>Loading...</div>
+            <section className="events-list">
+                <div>Error Retrieving Data</div>
+            </section>
         )
     }
 
+    if(loading & !data) {
+        return (
+            <section className="events-list">
+                <div>Loading...</div>
+            </section>
+        )
+    }
+
+    mapEvents();
+
     return (
         <section className="events-list">
-            <h2 className="events-list__heading">Current and Upcoming Events</h2>
-            {eventList}
+            <h2 className="events-list__heading">{heading}</h2>
+            {renderedEvents}
         </section>
     )
 }

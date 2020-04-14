@@ -39,6 +39,8 @@
 
     &:disabled {
         color: #999;
+        background-color: #EEE;
+        border-color: #555;
         cursor: default;
 
         &:hover {
