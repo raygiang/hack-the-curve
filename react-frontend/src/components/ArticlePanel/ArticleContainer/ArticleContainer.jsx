@@ -23,6 +23,10 @@ const ArticleContainer = (props) => {
                 Featured_Image {
                     url
                 }
+                categories {
+                    Name
+                    Color
+                }
             }
         }
     `;
@@ -43,6 +47,7 @@ const ArticleContainer = (props) => {
                 featuredImage={article.Featured_Image}
                 publishDate={article.Publish_Date}
                 content={article.Content}
+                categories={article.categories}
             />
         ));
         renderedArticles = articles;

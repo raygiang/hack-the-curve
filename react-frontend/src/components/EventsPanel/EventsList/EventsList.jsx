@@ -14,16 +14,7 @@ function EventsList(props) {
             "Current and Upcoming Events";
     const limitString = selectedDay ? '' : ', limit: 5';
     let renderedEvents;
-
-    console.log(`
-    query {
-        events(where: ${whereClause},
-        sort: "Start_Time" ${limitString}) {
-            Name
-            Start_Time
-        }
-    }
-`);
+    
     const GET_EVENTS = gql`
         query {
             events(where: ${whereClause},

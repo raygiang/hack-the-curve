@@ -2,8 +2,8 @@
 @import '../../../../assets/styles/mixins.scss';
 
 .event-card {
-    @include secondary-button;
-    background-color: $primary-color;
+    @include primary-button;
+    // background-color: $primary-color;
     margin: 0.5rem 1rem;
     padding: 1rem;
     display: flex;

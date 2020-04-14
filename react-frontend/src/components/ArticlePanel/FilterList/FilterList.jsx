@@ -9,6 +9,7 @@ const GET_CATEGORIES = gql`
             categories {
                 id
                 Name
+                Color
             }
         }
     `;
@@ -31,6 +32,7 @@ function FilterList(props) {
                 key={index}
                 id={category.id}
                 name={category.Name}
+                color={category.Color}
                 toggleCategory={toggleCategory}
             />
         ));

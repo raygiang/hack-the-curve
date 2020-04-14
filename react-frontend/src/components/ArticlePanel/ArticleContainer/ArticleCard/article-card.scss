@@ -2,19 +2,25 @@
 @import '../../../../assets/styles/mixins.scss';
 
 .article-card {
+    background-color: $primary-color;
+    color: $primary-foreground;
     margin-bottom: 1rem;
-    background-color: #e4ffd9;
     padding: 1rem;
     border-radius: 10px;
     display: flex;
     flex-flow: row;
+    overflow: hidden;
+
+    &__meta-container {
+        order: -1;
+    }
 
     &__feature-image-container {
-        order: -1;
         min-width: 120px;
         width: 120px;
         height: 120px;
         border-radius: 10px;
+        margin-bottom: 1rem;
         @include image-container;
 
         &:hover {
@@ -24,6 +30,23 @@
                 @include image-overlay(rgba(255, 255, 255, 0.3));
             }
         }
+    }
+
+    &__category {
+        position: relative;
+    }
+
+    &__category-marker {
+        position: absolute;
+        width: 150%;
+        height: 100%;
+        left: -50%;
+        clip-path: polygon(93% 0, 100% 50%, 93% 100%, 0 100%, 0 0);
+    }
+
+    &__category-text {
+        position: relative;
+        padding: 0.25rem 1rem;
     }
 
     &__content-container {
@@ -37,18 +60,12 @@
         a {
             font-weight: normal;
             font-size: 30px;
-            text-decoration: none;
-            color: #000;
-
-            &:hover {
-                color: $secondary-color;
-            }
+            @include primary-link;
         }
     }
 
     &__date {
         order: -1;
-        color: $primary-color;
         font-weight: bold;
         font-size: 18px;
     }
@@ -59,7 +76,7 @@
 
     &__read-more-link {
         width: max-content;
-        margin-left: auto;
-        @include primary-button;
+        margin: auto 0 0 auto;
+        @include article-button;
     }
 }

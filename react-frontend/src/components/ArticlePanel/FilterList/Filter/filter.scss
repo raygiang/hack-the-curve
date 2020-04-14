@@ -3,25 +3,55 @@
 @import '../../../../assets/styles/mixins.scss';
 
 .filter {
+    padding-left: 1rem;
+
     &__input {
         &:focus + label {
-            outline: 1px dashed #FFF;
+            outline: 1px dashed $primary-foreground;
         }
 
         &:checked + label {
-            background-color: $secondary-color;
+            color: $primary-foreground;
+
+            .filter__marker {
+                left: -50%;
+            }
         }
     }
 
     &__label {
         font-size: 18px;
-        border: 1px solid #000;
-        border-radius: 10px;
         display: block;
         margin: 0.25rem 0;
         width: 100%;
-        @include secondary-button;
         padding: 0.5rem 1rem;
+        position: relative;
+        @include primary-link;
+
+        .filter__text {
+            display: block;
+            position: relative;
+        }
+
+        &:hover {
+            color: $primary-foreground;
+
+            .filter__marker {
+                left: -50%;
+            }
+        }
+    }
+
+    &__marker {
+        display: block;
+        width: 150%;
+        height: 40px;
+        position: absolute;
+        left: -150%;
+        top: 0;
+        transition: all 1s;
+        overflow: hidden;
+        clip-path: polygon(93% 0, 100% 50%, 93% 100%, 0 100%, 0 0);
     }
 
 

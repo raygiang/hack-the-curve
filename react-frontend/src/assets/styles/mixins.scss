@@ -18,10 +18,11 @@
 }
 
 @mixin primary-link {
-    color: $secondary-color;
+    text-decoration: none;
+    color: $primary-foreground;
 
     &:hover {
-        color: $primary-color;
+        color: $primary-hover;
     }
 }
 
@@ -32,7 +33,7 @@
     border-radius: 5px;
     border: 1px solid $secondary-color;
     background-color: $secondary-color;
-    color: #FFF;
+    color: $secondary-foreground;
     display: inline-block;
     cursor: pointer;
     -webkit-appearance: none;
@@ -49,7 +50,8 @@
     }
 
     &:hover {
-        background-color: #FFF;
+        border-color: $secondary-foreground;
+        background-color: $secondary-foreground;
         color: $secondary-color;
     }
 }
@@ -57,13 +59,26 @@
 @mixin secondary-button {
     @include primary-button;
     border-color: #FFF;
-    color: #FFF;
     background-color: transparent;
+    color: #FFF;
 
     &:hover {
         border-color: #000;
-        color: #000;
         background-color: #FFF;
+        color: #000;
+    }
+}
+
+@mixin article-button {
+    @include primary-button;
+    border-color: $tertiary-color;
+    background-color: $tertiary-color;
+    color: $tertiary-foreground;
+
+    &:hover {
+        border-color: $tertiary-color;
+        background-color: $tertiary-foreground;
+        color: $tertiary-color;
     }
 }
 
