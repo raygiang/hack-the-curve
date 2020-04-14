@@ -10,9 +10,14 @@ import { validationSchema } from "../utils/validationSchema";
 const UserRegistrationForm = () => {
   const handlePhoneInputChange = (event, setFieldValue) => {
     let inputText = event.target.value;
-    if(inputText.length > 7) {
-      inputText = inputText.substring(0, 3) + " " + inputText.substring(4, 7) + " " + inputText.substring(8);
-    } else if(inputText.length > 3) {
+    if (inputText.length > 7) {
+      inputText =
+        inputText.substring(0, 3) +
+        " " +
+        inputText.substring(4, 7) +
+        " " +
+        inputText.substring(8);
+    } else if (inputText.length > 3) {
       inputText = inputText.substring(0, 3) + " " + inputText.substring(4);
     }
 
@@ -22,16 +27,52 @@ const UserRegistrationForm = () => {
     <section className="user-registration">
       <Formik
         validateOnChange={true}
-        initialValues={{ firstName: "", lastName: "", email: "", phone: "" }}
+        initialValues={{
+          username: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          password: "",
+          passwordConfirm: "",
+        }}
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          console.log(data);
+
+          fetch(`${process.env.REACT_APP_CITY_AXESS_API}/auth/local/register`, {
+            method: "post",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              username: data.username,
+              first_name: data.firstName,
+              last_name: data.lastName,
+              email: data.email,
+              phone: data.phone,
+              password: data.password,
+            }),
+          })
+            .then((res) => {
+              return res.json();
+            })
+            .then((data) => {
+              console.log(data);
+            });
+
           setSubmitting(false);
         }}
       >
-        {({ values, setFieldValue, handleBlur}) => (
+        {({ values, setFieldValue, handleBlur }) => (
           <Form>
+            <div>
+              <InputField
+                fieldLabel="Username"
+                placeholder="Your Username"
+                fieldName="username"
+              />
+            </div>
             <div>
               <InputField
                 fieldLabel="First Name"
@@ -63,6 +104,20 @@ const UserRegistrationForm = () => {
                 value={values.phone}
               />
               <ErrorMessage name="phone" />
+            </div>
+            <div>
+              <InputField
+                fieldLabel="Password"
+                placeholder="Password"
+                fieldName="password"
+                type="password"
+              />
+              <InputField
+                fieldLabel="Confirm Password"
+                placeholder="Confirm Password"
+                fieldName="passwordConfirm"
+                type="password"
+              />
             </div>
 
             <pre>{JSON.stringify(values, null, 2)}</pre>

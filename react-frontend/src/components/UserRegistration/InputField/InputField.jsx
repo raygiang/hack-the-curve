@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Field, ErrorMessage } from "formik";
 import { TextField } from "@material-ui/core";
@@ -8,17 +8,26 @@ import { TextField } from "@material-ui/core";
  * @param Object fieldLabel :string, placeholder :string, fieldName :string
  * @returns  {ReactFC} Text field and with error message
  */
-const InputField = ({ fieldLabel = "", placeholder = "", fieldName = "" }) => {
+const InputField = ({
+  fieldLabel = "",
+  placeholder = "",
+  fieldName = "",
+  type = "input",
+}) => {
   return (
     <>
       <Field
         label={`${fieldLabel}*`}
         placeholder={placeholder}
         name={fieldName}
-        type="input"
+        type={type}
         as={TextField}
       />
-      <ErrorMessage name={fieldName} />
+      <div>
+        <span>
+          <ErrorMessage name={fieldName} />
+        </span>
+      </div>
     </>
   );
 };
