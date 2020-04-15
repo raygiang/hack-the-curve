@@ -152,7 +152,7 @@ function LoginForm() {
 
     return (
         <section className={displayReset ? 'reset-form' : 'login-form'}>
-            <h2 className={(displayReset ? 'reset-form' : 'login-form') + "__heading"}>{displayReset? 'Reset Password' : 'Login'}</h2>
+            <h2 className={(displayReset ? 'reset-form' : 'login-form') + "__heading"}>{displayReset ? 'Reset Password' : 'Login'}</h2>
             {displayReset ? resetPasswordForm : loginForm}
         </section>
     )

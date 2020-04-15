@@ -8,6 +8,7 @@ import UserRegistrationForm from "../UserRegistration/UserRegistrationForm/UserR
 import LoginPage from "../pages/LoginPage/LoginPage";
 
 import { Switch, Route, withRouter } from "react-router-dom";
+import ResetPassword from "../pages/ResetPassword/ResetPassword";
 
 const App = ({ history }) => {
   return (
@@ -17,6 +18,7 @@ const App = ({ history }) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/register" component={UserRegistrationForm} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/reset-password" component={ResetPassword} />
       </Switch>
     </div>
   );
