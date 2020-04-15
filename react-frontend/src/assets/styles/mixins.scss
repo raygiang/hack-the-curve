@@ -82,6 +82,18 @@
     }
 }
 
+@mixin cancel-button {
+    @include primary-button;
+    border-color: $error-color;
+    background-color: $error-color;
+    color: $primary-foreground;
+
+    &:hover {
+        background-color: $primary-foreground;
+        color: $error-color;
+    }
+}
+
 @mixin image-overlay( $color ) {
     display: block;
     content: '';

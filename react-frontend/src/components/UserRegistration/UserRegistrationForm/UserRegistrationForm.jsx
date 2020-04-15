@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import { TextField, Button } from "@material-ui/core";
 
-import InputField from "../InputField/InputField";
+import InputField from "../../FormComponents/InputField/InputField";
 
 import { validationSchema } from "../utils/validationSchema";
 
