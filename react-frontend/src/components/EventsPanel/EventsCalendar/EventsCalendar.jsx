@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import './events-calendar.scss';
 
-function EventsCalendar(props) {
+const EventsCalendar = (props) => {
     const {setSelectedDay} = props;
     const [date, setDate] = useState(new Date());
     const displayedYear = date.getFullYear();

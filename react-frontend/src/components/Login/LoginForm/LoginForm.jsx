@@ -6,7 +6,7 @@ import { validationSchemaLogin, validationSchemaReset } from "../utils/validatio
 import auth from '../../../utils/auth';
 import './login-form.scss';
 
-function LoginForm() {
+const LoginForm = () => {
     const history = useHistory();
     const [serverErrors, setServerErrors] = useState(null);
     const [displayReset, setDisplayReset] = useState(false);

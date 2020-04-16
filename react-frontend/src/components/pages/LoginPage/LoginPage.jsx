@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from '../../Login/LoginForm/LoginForm';
 import './login-page.scss';
 
-function LoginPage() {
+const LoginPage = () => {
     return (
         <main className="login-page">
             <h1 className="login-page__heading">Welcome to City Axess!</h1>

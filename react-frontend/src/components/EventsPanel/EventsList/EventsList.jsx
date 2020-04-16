@@ -7,7 +7,7 @@ import './events-list.scss';
 /**
  * The container component for upcoming events
  */ 
-function EventsList(props) {
+const EventsList = (props) => {
     const {selectedDay, whereClause} = props;
     const heading = selectedDay ? 
             "Events on " + selectedDay.toLocaleString('default', { month: 'short' }) + " " + selectedDay.getDate() + " " + selectedDay.getFullYear(): 

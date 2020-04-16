@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom';
 import auth from '../../utils/auth';
 import './header.scss';
 
-function Header() {
+const Header = () => {
     const history = useHistory();
 
     const logout = () => {

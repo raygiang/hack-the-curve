@@ -6,7 +6,7 @@ import { validationSchema } from "../utils/validationSchema";
 import auth from '../../../utils/auth';
 import './reset-password-form.scss';
 
-function ResetPasswordForm() {
+const ResetPasswordForm = () => {
     const history = useHistory();
     const [serverErrors, setServerErrors] = useState(null);
     const searchParams = new URLSearchParams(window.location.search);
