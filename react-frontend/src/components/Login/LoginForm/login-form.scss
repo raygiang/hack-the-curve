@@ -1,0 +1,62 @@
+@import './../../../assets/styles/variables.scss';
+@import './../../../assets/styles/mixins.scss';
+
+.login-form, .reset-form {
+    width: 40%;
+    min-width: 400px;
+    margin: 1rem auto;
+    padding: 2rem;
+    font-size: 18px;
+    background: $primary-color;
+    border-radius: 10px;
+    color: $primary-foreground;
+
+    &__heading {
+        margin-bottom: 0.5rem;
+        font-weight: normal;
+    }
+
+    &__identifier-field, &__password-field, &__email-field {
+        display: flex;
+        flex-direction: column;
+        > div {
+            width: 100%;
+            margin: 0 auto;
+            + div {
+                color: $error-color;
+            }
+        }
+    }
+
+    &__submit-container {
+        display: flex;
+        padding-top: 2rem;
+    }
+
+    &__forgot-password, &__login-button {
+        @include cancel-button;
+        font-size: 18px;
+    }
+    
+    &__submit-button {
+        @include article-button;
+        font-size: 18px;
+    }
+
+    &__forgot-password {
+        margin-left: auto;
+    }
+
+    &__server-error {
+        color: $error-color;
+        margin-top: 1rem;
+    }
+
+    &__success-message {
+        margin-top: 1rem;
+    }
+}
+
+.reset-form__submit-button {
+    margin-left: auto;
+}

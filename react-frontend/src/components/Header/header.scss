@@ -1,0 +1,15 @@
+.main-header {
+    background-color: #65bedd;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+        margin: auto 0;
+    }
+
+    &__heading {
+        font-size: 38px;
+        font-weight: bold;
+    }
+}

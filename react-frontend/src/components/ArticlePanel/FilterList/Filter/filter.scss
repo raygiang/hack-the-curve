@@ -1,0 +1,52 @@
+@import '../../../../assets/styles/global.scss';
+@import '../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/mixins.scss';
+
+.filter {
+    padding-left: 1rem;
+
+    &__input {
+        &:focus + label {
+            outline: 1px dashed $primary-foreground;
+        }
+
+        &:checked + label {
+            .filter__marker {
+                left: -50%;
+            }
+        }
+    }
+
+    &__label {
+        font-size: 18px;
+        display: block;
+        margin: 0.25rem 0;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        position: relative;
+        @include primary-link;
+
+        .filter__text {
+            display: block;
+            position: relative;
+        }
+
+        &:hover {
+            color: red;
+        }
+    }
+
+    &__marker {
+        display: block;
+        width: 150%;
+        height: 40px;
+        position: absolute;
+        left: -150%;
+        top: 0;
+        transition: all 0.5s;
+        overflow: hidden;
+        clip-path: polygon(93% 0, 100% 50%, 93% 100%, 0 100%, 0 0);
+    }
+
+
+}

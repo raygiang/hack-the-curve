@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/mixins.scss';
+
+.event-card {
+    @include primary-button;
+    // background-color: $primary-color;
+    margin: 0.5rem 1rem;
+    padding: 1rem;
+    display: flex;
+    font-size: 16px;
+
+    &__date {
+        order: -1;
+        flex: 20%;
+        margin-right: 5%;
+    }
+
+    &__name {
+        flex: 75%;
+    }
+}

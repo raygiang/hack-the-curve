@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "test_data",
+  "info": {
+    "name": "test_data"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Username": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Age": {
+      "type": "integer",
+      "min": 1,
+      "required": true
+    },
+    "Bio": {
+      "type": "text"
+    }
+  }
+}
